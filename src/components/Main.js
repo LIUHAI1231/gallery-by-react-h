@@ -20,15 +20,77 @@ imageDatas = (function genImageURL(imageDatasArr){
  return imageDatasArr;
 })(imageDatas);
 
-class AppComponent extends React.Component {
-  render() {
+/*var ImgFigure = React.createClass({
+  render: function(){
+    return (
+      <figure>
+        <img src = {this.props.data.imageURL} alt = {this.props.data.title}/>
+        <figcaption>
+          <h2>{this.props.data.title}</h2>
+        </figcaption>
+      </figure>
+    );
+  }
+});*/
+
+
+/*var GalleryByReactApp = React.createClass({
+  render: function(){
+
+    var controllerUnits = [],
+        imgFigures = [];
+    
+    imageDatas.forEach(function(value){
+      imgFigures.push(<ImgFigure data = {value} />);
+    });
     return (
       <section className="stage">
         <section className="img-sec">
-
+          {imgFigures}
         </section>
-        <nav className="controller-nav">
+        <nav className="controller-nav ">
+          {controllerUnits}
+        </nav>
+      </section>
+    );
+  }
+});
 
+React.render(<GalleryByReactApp/>, document.getElementById('content'));
+
+module.exports = GalleryByReactApp;*/
+
+
+class ImgFigure extends React.Component {
+  render() {
+    return (
+      <figure>
+        <img src = {this.props.data.imageURL} alt = {this.props.data.title}/>
+        <figcaption>
+          <h2>{this.props.data.title}</h2>
+        </figcaption>
+      </figure>
+    );
+  }
+};
+
+class AppComponent extends React.Component {
+  render() {
+
+    var controllerUnits = [],
+        imgFigures = [];
+    
+    imageDatas.forEach(function(value){
+      imgFigures.push(<ImgFigure data = {value} />);
+    });
+
+    return (
+      <section className="stage">
+        <section className="img-sec">
+          {imgFigures}
+        </section>
+        <nav className="controller-nav ">
+          {controllerUnits}
         </nav>
       </section>
     );
